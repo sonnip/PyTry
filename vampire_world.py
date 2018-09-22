@@ -29,6 +29,11 @@ def vamps_death():
     time.sleep(1)
     print('GAME OVER')
 
+def leave_dungeon():
+    print('You say "Goodbye" and leave the dungeon.')
+    print(('The next morning you wake up and ask yourself:'))
+    print('"Did that really just happen??"')
+
 
 
 
@@ -36,7 +41,9 @@ def vamps_death():
 name = input("What is your name? ")
 
 #print("Your name is {} and your are awake at {}." .format(name, regime))
-#print("Welcome to the Dungeon {}!" .format(name))
+print()
+print("Welcome to the Dungeon {}!" .format(name))
+print()
 
 door = input("Do you wish to enter through door 1 or 2? ")
 print("")
@@ -45,8 +52,8 @@ door = get_reply(door)
 
 if door == '1':
         print('There is beautiful vampire contemplating life.')
-        nvm = input(' "What is the purpose of your visit?" ')
-        print(' "Nevermind. It doesnt matter. You are here now. Are you going to stay a while?')
+        nvm = input('"What is the purpose of your visit?" ')
+        print('"Nevermind. It doesnt matter. You are here now. Are you going to stay a while?')
         print('What do you do?')
         print('1. Smile and nod.')
         print('2. Scream and run.')
@@ -73,7 +80,7 @@ if door == '1':
 if door == '2':
     print('You enter into a dimly lit room.')
     print()
-    print('When your eyes adjust to the darkness you suddenly see that there is three vampires staring at you.')
+    print('When your eyes adjust to the darkness you suddenly see that there is three vampires looking at you.')
     print()
     time.sleep(1)
     print('What do you do?')
@@ -94,7 +101,13 @@ if door == '2':
             new_friend('Roberta')
             new_friend('Tavia')
             new_friend('Maitane')
+            print()
             print_friends()
+            print()
+            print('"We are very hungry but you seem friendly so we wont drink your blood.')
+            print()
+            leave_dungeon()
+
 
     elif reply == '2':
             print('You stare at the vampires. Thats very rude actually.')
@@ -110,13 +123,17 @@ if door == '2':
             print()
             time.sleep(1)
             if dice >= 5:
-                    print('Lucky you. They let you leave. Be more respectful next time.')
+                    print('Lucky you. They let you go. Be more respectful next time.')
+                    print()
+                    leave_dungeon()
             elif dice >= 3:
                     print('They are not sure what to do with you. Do you have any friends to protect you?')
                     time.sleep(1)
                     if len(friends) > 0:
                             print('Your friend {} steps forward and speaks to the vampire sisters in a foreign language.'.format(friends[0]))
-                            print('They dont seem happy but they let you leave.')
+                            print('They dont seem happy but they let you go.')
+                            print()
+                            leave_dungeon()
                     else:
                             print('You are on your own.')
                             time.sleep(2)
