@@ -1,6 +1,8 @@
 import time
 import random
 
+door_greetings = {'1': "This is Edwards room.", '2' : "You enter into a dimly lit room."}
+
 def get_reply( check ):
     while check != '1' and check != '2':
         check = input("You are not so good with numbers are you? 1 or 2? ")
@@ -19,8 +21,6 @@ def print_friends():
     print()
 
 def vamps_death():
-    print('You try to run.')
-    time.sleep(2)
     print()
     print('Fool. They are much faster than you.')
     print()
@@ -36,21 +36,8 @@ def leave_dungeon():
 
 
 
-
-#regime = input("Do you prefer night or day? ")
-name = input("What is your name? ")
-
-#print("Your name is {} and your are awake at {}." .format(name, regime))
-print()
-print("Welcome to the Dungeon {}!" .format(name))
-print()
-
-door = input("Do you wish to enter through door 1 or 2? ")
-print("")
-
-door = get_reply(door)
-
-if door == '1':
+def door_one():
+        print('{}'.format(door_greetings['1']))
         print('There is beautiful vampire contemplating life.')
         nvm = input('"What is the purpose of your visit?" ')
         print('"Nevermind. It doesnt matter. You are here now. Are you going to stay a while?')
@@ -67,18 +54,18 @@ if door == '1':
             print()
             new_friend('Edward')
             print_friends()
-            print(' "Come I want to introduce you to my friends."')
+            print(' "Come, I want to introduce you to the others."')
             time.sleep(2)
             print()
             print()
-            door = '2'
+            door_two()
 
         else:
-            door = '2'
             print('You turn around and run through a random door.')
+            door_two()
 
-if door == '2':
-    print('You enter into a dimly lit room.')
+def door_two():
+    print('{}'.format(door_greetings['2']))
     print()
     print('When your eyes adjust to the darkness you suddenly see that there is three vampires looking at you.')
     print()
@@ -94,18 +81,25 @@ if door == '2':
     if reply == '1':
             print('You bow respectfully and say "Greetings, my name is {}"' .format(name))
             print()
+            time.sleep(1)
             print('The vampires appreciate your respectful introduction.')
             print()
-            print('The tallest of the vampires steps forward')
+            time.sleep(1)
+            print('The tallest of the vampires steps forward.')
+            time.sleep(2)
             print('"Welcome {}. My name is Roberta and these are my sisters Tavia and Maitane."' .format(name))
+            print()
+            time.sleep(1)
             new_friend('Roberta')
             new_friend('Tavia')
             new_friend('Maitane')
             print()
             print_friends()
             print()
-            print('"We are very hungry but you seem friendly so we wont drink your blood.')
+            time.sleep(2)
+            print('"We are very hungry but you seem friendly so we wont drink your blood."')
             print()
+            time.sleep(1)
             leave_dungeon()
 
 
@@ -115,7 +109,7 @@ if door == '2':
             print()
             print('"You shouldnt have disturbed us. We are very hungry."')
             print()
-            print('You will roll a dice to determine whether you survive this encounter or not.')
+            print('You will roll a dice to determine whether you will survive this encounter or not.')
             time.sleep(5)
             print()
             dice = random.randint(1, 6)
@@ -131,6 +125,7 @@ if door == '2':
                     time.sleep(1)
                     if len(friends) > 0:
                             print('Your friend {} steps forward and speaks to the vampire sisters in a foreign language.'.format(friends[0]))
+                            print()
                             print('They dont seem happy but they let you go.')
                             print()
                             leave_dungeon()
@@ -140,7 +135,53 @@ if door == '2':
                             vamps_death()
             else:
                     print('Unlucky.')
+                    print()
                     time.sleep(2)
-                    vamps_death()
+                    print('You try to run.')
+                    time.sleep(2)
+                    print('You roll the dice again to see if you make it.')
+                    time.sleep(5)
+                    dice = random.randint(1, 6)
+                    print()
+                    print('You got a {}'.format(dice))
+                    print()
+                    time.sleep(2)
+                    if dice >= 5:
+                        print('You see a small door to your right. You run down the hidden path as fast as you can and escape.')
+                    elif dice >= 3:
+                        print('Your run for your life but you dont see that there is a hole in the ground.')
+                        print()
+                        print('You fall for ')
+                        for i in range(30):
+                            print(i)
+                            time.sleep(0.2)
+                        print('You fell down 30m and died.')
+                        print()
+                        print()
+                        print()
+                        time.sleep(4)
+                        print('GAME OVER')
+                    else:
+                        time.sleep(2)
+                        vamps_death()
 
 
+
+#regime = input("Do you prefer night or day? ")
+name = input("What is your name? ")
+
+#print("Your name is {} and your are awake at {}." .format(name, regime))
+print()
+print("Welcome to the Dungeon {}!" .format(name))
+print()
+
+door = input("Do you wish to enter through door 1 or 2? ")
+print("")
+
+door = get_reply(door)
+
+
+if door == '1':
+    door_one()
+else:
+    door_two()
