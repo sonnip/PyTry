@@ -8,6 +8,23 @@ def get_reply( check ):
         check = input("You are not so good with numbers are you? 1 or 2? ")
     return check
 
+def end():
+    print()
+    print()
+    time.sleep(4)
+    print('THE END')
+    print()
+    print('Do you want to start over?')
+    print('1. Start again.')
+    print('2. No, thank you.')
+    reply = input(' >')
+    get_reply(reply)
+    if reply == '1':
+        start()
+    else:
+        print('Bye!')
+
+
 friends = []
 
 def new_friend ( name ):
@@ -36,7 +53,7 @@ def leave_dungeon():
 
 
 
-def door_one():
+def door_one( name ):
         print('{}'.format(door_greetings['1']))
         print('There is beautiful vampire contemplating life.')
         nvm = input('"What is the purpose of your visit?" ')
@@ -58,13 +75,13 @@ def door_one():
             time.sleep(2)
             print()
             print()
-            door_two()
+            door_two( name )
 
         else:
             print('You turn around and run through a random door.')
-            door_two()
+            door_two( name )
 
-def door_two():
+def door_two( name ):
     print('{}'.format(door_greetings['2']))
     print()
     print('When your eyes adjust to the darkness you suddenly see that there is three vampires looking at you.')
@@ -166,22 +183,27 @@ def door_two():
                         vamps_death()
 
 
+def start():
 
-#regime = input("Do you prefer night or day? ")
-name = input("What is your name? ")
+    #regime = input("Do you prefer night or day? ")
+    name = input("What is your name? ")
 
-#print("Your name is {} and your are awake at {}." .format(name, regime))
-print()
-print("Welcome to the Dungeon {}!" .format(name))
-print()
+    #print("Your name is {} and your are awake at {}." .format(name, regime))
+    print()
+    print("Welcome to the Dungeon {}!" .format(name))
+    print()
 
-door = input("Do you wish to enter through door 1 or 2? ")
-print("")
+    door = input("Do you wish to enter through door 1 or 2? ")
+    print("")
 
-door = get_reply(door)
+    door = get_reply(door)
 
 
-if door == '1':
-    door_one()
-else:
-    door_two()
+    if door == '1':
+        door_one( name )
+    else:
+        door_two( name )
+
+
+start()
+end()
